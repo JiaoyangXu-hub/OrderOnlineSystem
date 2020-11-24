@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'DispatcherSystem',
     'MerchantSystem',
     'Login',
+    'cmdb',
 ]
 
 MIDDLEWARE = [

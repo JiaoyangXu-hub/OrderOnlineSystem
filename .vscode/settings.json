@@ -3,5 +3,6 @@
         "ewisq",
         "hzwy",
         "ppydv"
-    ]
+    ],
+    "python.pythonPath": "VENV\\Scripts\\python.exe"
 }
