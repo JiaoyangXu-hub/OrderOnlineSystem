@@ -23,4 +23,3 @@ urlpatterns = [
     path('DispatcherSystem/',include('DispatcherSystem.urls')),
     path('MerchantSystem/',include('MerchantSystem.urls')),
 ]
-E:\PROJECT\OrderOnlineSystem\OrderOnlineSystem\OrderOnlineSystem\Templates\Login\login_view.html
