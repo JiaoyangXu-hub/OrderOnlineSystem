@@ -18,8 +18,9 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Login/',include('Login.urls'),{'tag':'L'}),
-    path('CustomerSystem/',include('CustomerSystem.urls'),{'tag':'C'}),
-    path('DispatcherSystem/',include('DispatcherSystem.urls'),{'tag':'D'}),
-    path('MerchantSystem/',include('MerchantSystem.urls'),{'tag':'M'}),
+    path('Login/',include('Login.urls')),
+    path('CustomerSystem/',include('CustomerSystem.urls')),
+    path('DispatcherSystem/',include('DispatcherSystem.urls')),
+    path('MerchantSystem/',include('MerchantSystem.urls')),
 ]
+E:\PROJECT\OrderOnlineSystem\OrderOnlineSystem\OrderOnlineSystem\Templates\Login\login_view.html
