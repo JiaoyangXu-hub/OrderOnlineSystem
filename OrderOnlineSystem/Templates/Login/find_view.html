@@ -1,0 +1,31 @@
+{% extends '../base.html' %} {% block title %} 登录页面 {% endblock %} {% block content %}
+<!-- 登录表单 -->
+<!-- 表单提交地址未设定 -->
+<form style="margin-left:30%;margin-top:20%;">
+    <h3 style="margin-bottom: 10%;">校园外卖系统</h3>
+
+    <!-- 输入框 -->
+    <div class="form-group">
+        <label for="user" style="display:inline;">
+            账户：
+        </label>
+        <input type="text" class="form-control" id="user" style="display:inline;width:200px;" autocomplete="off" />
+    </div>
+
+    <div class="form-group">
+        <label for="password" style="display:inline;">
+            密码：
+        </label> <input type="password" class="form-control" id="password" style="display:inline;width:200px;" autocomplete="off" />
+    </div>
+
+    <!-- 跳转注册界面 -->
+    <button type="submit" class="btn btn-primary" onclick="register()">
+        注册
+    </button>
+    <!-- 跳转找回界面 -->
+    <button type="submit" class="btn btn-primary" onclick="find()">
+        找回
+    </button>
+</form>
+
+{% endblock %}

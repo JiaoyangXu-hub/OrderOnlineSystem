@@ -6,7 +6,7 @@
 
     <!-- 输入框 -->
     <div class="form-group">
-        <label for="user" stype="display:inline;">
+        <label for="user" style="display:inline;">
             账户：
         </label>
         <input type="text" class="form-control" id="user" style="display:inline;width:200px;" autocomplete="off" />
@@ -15,7 +15,7 @@
     <div class="form-group">
         <label for="password" style="display:inline;">
             密码：
-        </label> <input type="text" class="form-control" id="password" style="display:inline;width:200px;" autocomplete="off" />
+        </label> <input type="password" class="form-control" id="password" style="display:inline;width:200px;" autocomplete="off" />
     </div>
 
     <!-- 按钮 -->
@@ -25,23 +25,33 @@
         </button>
         <ul class="dropdown-menu">
             <!-- 填充顾客系统的主页面地址 -->
-            <li><a href="#">顾客</a></li>
+            <li>
+                <a href="#">顾客</a>
+            </li>
             <li role="separator" class="divider"></li>
             <!-- 填充商家系统主页面地址 -->
-            <li><a href="#">商家</a></li>
+            <li>
+                <a href="#">商家</a>
+            </li>
             <li role="separator" class="divider"></li>
             <!-- 填充送餐员页主页面地址 -->
-            <li><a href="#">送餐员</a></li>
+            <li>
+                <a href="#">送餐员</a>
+            </li>
         </ul>
     </div>
     <!-- 跳转注册界面 -->
-    <button type="submit" class="btn btn-primary" onclick="register()">
+    <a href="{% url 'Login:regist' %}">
+        <button type="button" class="btn btn-primary">
         注册
-    </button>
+        </button>
+    </a>
     <!-- 跳转找回界面 -->
-    <button type="submit" class="btn btn-primary" onclick="find()">
+    <a href="{% url 'Login:find' %}">
+        <button type="button" class="btn btn-primary">
         找回
-    </button>
+        </button>
+    </a>
 </form>
 
 {% endblock %}

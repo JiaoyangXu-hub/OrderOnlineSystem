@@ -2,8 +2,11 @@ from django.urls import path
 
 from . import views
 
+app_name = "Login"
+
 urlpatterns = [
-    path('', views.login_view),
-    path('find/', views.find_view),
-    path('regist/', views.regist_view),
+    path('', views.login_view,name = 'login'),
+    path('find/', views.find_view,name = 'find'),
+    path('regist/', views.regist_view,name = 'regist'),
+    path('regist_form/',views.post_regist_form,name='formPost'),
 ]
