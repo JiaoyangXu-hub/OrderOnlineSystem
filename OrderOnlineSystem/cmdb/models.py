@@ -10,7 +10,6 @@ class Usr(models.Model):
         ('C','顾客'),
         ('M','商家'),
         ('D','送餐员'),
-        ('A','管理员'),
     ]
 
     ID = models.CharField(primary_key=True,max_length=20,verbose_name="账号")
@@ -18,9 +17,8 @@ class Usr(models.Model):
     location = models.CharField(max_length=50,verbose_name="地址")
     phoneNumber = models.CharField(max_length=50,verbose_name="电话号码")
     email = models.EmailField(verbose_name="邮箱")
-    lastLoginTime = models.DateTimeField(auto_now_add=True,blank=False,editable=False,verbose_name="最后登录时间")
     stage = models.CharField(choices=_stage,max_length=20,verbose_name="身份")
-    active = models.BooleanField(verbose_name="是否登录")
+    lastLoginTime = models.DateTimeField(auto_now_add=True,blank=False,editable=False,verbose_name="最后登录时间")
 
     class Meta:
         db_table = "Usr"

@@ -1,64 +1,16 @@
 {% extends '../base.html' %} {% block title %} 注册页面 {% endblock %} {% block content %}
 <div class="container">
-    <form style="margin-left:30%;margin-top:20%;" method="POST" action="{% url 'Login:formPost' %}">
+    <form style="margin-left:30%;margin-top:20%;" method="POST" action="{% url 'Login:regist_post' %}">
         {% csrf_token %}
         <h3 style="margin-bottom: 10%;">账号注册</h3>
-        <div class="form-group">
-            <label for="user" style="display:inline;">
-                账户：
-            </label>
-            <input name="ID" type="text" class="form-control" style="display:inline;width:200px;" autocomplete="off" />
-        </div>
-
-        <div class="form-group">
-            <label for="password" style="display:inline;">
-                密码：
-            </label> <input name="password" type="password" class="form-control" id="password" style="display:inline;width:200px;" autocomplete="off" />
-        </div>
-
-        <div class="form-group">
-            <label for="" style="display:inline;">
-                地址：
-            </label>
-            <input name="location" type="text" class="form-control" style="display:inline;width:200px;" autocomplete="off" />
-        </div>
-
-        <div class="form-group">
-            <label for="" style="display:inline;">
-                Tel &nbsp：
-            </label>
-            <input name="phoneNumber" type="tel" class="form-control" style="display:inline;width:200px;" autocomplete="off" />
-        </div>
-
-        <div class="form-group">
-            <label for="" style="display:inline;">
-                邮箱：
-            </label>
-            <input name="email" type="email" class="form-control" style="display:inline;width:200px;" autocomplete="off" />
-        </div>
-
-        <!-- 待完善 -->
-        <div class="btn-group">
-            <button type="submit" class="btn btn-primary btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              注册 <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <!-- 填充顾客系统的主页面地址 -->
-                <li>
-                    <input type="submit" name="stage" value="顾客" style="left: 20px;right: 20px;">
-                </li>
-                <li role="separator" class="divider"></li>
-                <!-- 填充商家系统主页面地址 -->
-                <li>
-                    <input type="submit" name="stage" value="商家">
-                </li>
-                <li role="separator " class="divider "></li>
-                <!-- 填充送餐员页主页面地址 -->
-                <li>
-                    <input type="submit" name="stage" value="送餐员">
-                </li>
-            </ul>
-        </div>
+        {{form.as_p}}
+        
+        {% comment %} 注册按钮 {% endcomment %}
+        
+        <button type="submit" class="btn btn-primary">
+        注册
+        </button>
+        <p>{{message}}</p>
     </form>
 </div>
 
