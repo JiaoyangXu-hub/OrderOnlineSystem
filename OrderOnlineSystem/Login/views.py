@@ -1,5 +1,5 @@
-from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.shortcuts import render,redirect,reverse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.views.decorators import csrf
 from cmdb.models import Usr
 from Form import UsrForm,LoginForm
@@ -8,7 +8,7 @@ from Form import UsrForm,LoginForm
 
 
 
-# Create your views here.
+# 加载指定页面
 
 def login_view(request):
     """
@@ -29,14 +29,16 @@ def regist_view(request):
     return render(request,'Login/regist_view.html',{'form':UsrForm})
 
 
+
+
 def login(request):
     
     '''
     提交登录表单
     '''
-    # request.session['is_login']=False
+    request.session['is_login']=False
     if request.session.get('is_login', None):  # 不允许重复登录
-        return render(request,request.session['stage']+'/base_view.html')
+        return redirect(reverse(request.session['stage']+'System:base'))
 
     if request.method == 'POST':
         login_form = LoginForm(request.POST)
@@ -53,8 +55,8 @@ def login(request):
             if user.password == password:
                 request.session['is_login'] = True
                 request.session['user_id'] = user.ID
-                request.session['stage'] = user.stage[0]
-                return render(request,request.session['stage']+'/base_view.html')
+                request.session['stage'] = user.stage
+                return redirect(reverse(request.session['stage']+'System:base'))
             else:
                 message = '密码不正确！'
                 return render(request, 'login/login.html', {"form":LoginForm,"message":message})
