@@ -1,0 +1,186 @@
+卷 文档 的文件夹 PATH 列表
+卷序列号为 1082-1066
+E:.
+│  db.sqlite3
+│  Form.py
+│  manage.py
+│  __init__.py
+│  
+├─cmdb
+│  │  admin.py
+│  │  apps.py
+│  │  models.py
+│  │  tests.py
+│  │  views.py
+│  │  __init__.py
+│  │  
+│  ├─migrations
+│  │  │  0001_initial.py
+│  │  │  0002_remove_usr_active.py
+│  │  │  0003_auto_20201214_2312.py
+│  │  │  __init__.py
+│  │  │  
+│  │  └─__pycache__
+│  │          0001_initial.cpython-38.pyc
+│  │          0002_remove_usr_active.cpython-38.pyc
+│  │          0003_auto_20201214_2312.cpython-38.pyc
+│  │          __init__.cpython-38.pyc
+│  │          
+│  └─__pycache__
+│          admin.cpython-38.pyc
+│          models.cpython-38.pyc
+│          __init__.cpython-38.pyc
+│          
+├─CustomerSystem
+│  │  admin.py
+│  │  apps.py
+│  │  models.py
+│  │  tests.py
+│  │  urls.py
+│  │  views.py
+│  │  __init__.py
+│  │  
+│  ├─migrations
+│  │  │  __init__.py
+│  │  │  
+│  │  └─__pycache__
+│  │          __init__.cpython-38.pyc
+│  │          
+│  ├─templates
+│  └─__pycache__
+│          admin.cpython-38.pyc
+│          models.cpython-38.pyc
+│          urls.cpython-38.pyc
+│          views.cpython-38.pyc
+│          __init__.cpython-38.pyc
+│          
+├─DispatcherSystem
+│  │  admin.py
+│  │  apps.py
+│  │  models.py
+│  │  tests.py
+│  │  urls.py
+│  │  views.py
+│  │  __init__.py
+│  │  
+│  ├─migrations
+│  │  │  __init__.py
+│  │  │  
+│  │  └─__pycache__
+│  │          __init__.cpython-38.pyc
+│  │          
+│  └─__pycache__
+│          admin.cpython-38.pyc
+│          models.cpython-38.pyc
+│          urls.cpython-38.pyc
+│          views.cpython-38.pyc
+│          __init__.cpython-38.pyc
+│          
+├─Login
+│  │  admin.py
+│  │  apps.py
+│  │  models.py
+│  │  tests.py
+│  │  urls.py
+│  │  views.py
+│  │  __init__.py
+│  │  
+│  ├─migrations
+│  │  │  __init__.py
+│  │  │  
+│  │  └─__pycache__
+│  │          __init__.cpython-38.pyc
+│  │          
+│  └─__pycache__
+│          admin.cpython-38.pyc
+│          models.cpython-38.pyc
+│          urls.cpython-38.pyc
+│          views.cpython-38.pyc
+│          __init__.cpython-38.pyc
+│          
+├─MerchantSystem
+│  │  admin.py
+│  │  apps.py
+│  │  models.py
+│  │  tests.py
+│  │  urls.py
+│  │  views.py
+│  │  __init__.py
+│  │  
+│  ├─migrations
+│  │  │  __init__.py
+│  │  │  
+│  │  └─__pycache__
+│  │          __init__.cpython-38.pyc
+│  │          
+│  └─__pycache__
+│          admin.cpython-38.pyc
+│          models.cpython-38.pyc
+│          urls.cpython-38.pyc
+│          views.cpython-38.pyc
+│          __init__.cpython-38.pyc
+│          
+├─OrderOnlineSystem
+│  │  asgi.py
+│  │  settings.py
+│  │  urls.py
+│  │  wsgi.py
+│  │  __init__.py
+│  │  
+│  └─__pycache__
+│          settings.cpython-38.pyc
+│          urls.cpython-38.pyc
+│          wsgi.cpython-38.pyc
+│          __init__.cpython-38.pyc
+│          
+├─static
+│  └─bootstrap-3.3.7-dist
+│      ├─css
+│      │      bootstrap-theme.css
+│      │      bootstrap-theme.css.map
+│      │      bootstrap-theme.min.css
+│      │      bootstrap-theme.min.css.map
+│      │      bootstrap.css
+│      │      bootstrap.css.map
+│      │      bootstrap.min.css
+│      │      bootstrap.min.css.map
+│      │      
+│      ├─fonts
+│      │      glyphicons-halflings-regular.eot
+│      │      glyphicons-halflings-regular.svg
+│      │      glyphicons-halflings-regular.ttf
+│      │      glyphicons-halflings-regular.woff
+│      │      glyphicons-halflings-regular.woff2
+│      │      
+│      └─js
+│              bootstrap.js
+│              bootstrap.min.js
+│              jquery.min.js
+│              npm.js
+│              
+├─Templates
+│  │  base.html
+│  │  
+│  ├─C
+│  │      base_view.html
+│  │      order_view.html
+│  │      pay_view.html
+│  │      
+│  ├─D
+│  │      base_view.html
+│  │      dealItem_view.html
+│  │      getCash_view.html
+│  │      
+│  ├─Login
+│  │      find_view.html
+│  │      login_view.html
+│  │      regist_view.html
+│  │      
+│  └─M
+│          base_view.html
+│          dealItem_view.html
+│          getCash_view.html
+│          
+└─__pycache__
+        Form.cpython-38.pyc
+        

@@ -7,9 +7,9 @@ class Usr(models.Model):
     用户数据库
     """
     _stage=[
-        ('C','顾客'),
-        ('M','商家'),
-        ('D','送餐员'),
+        ('Customer','顾客'),
+        ('Merchant','商家'),
+        ('Dispacher','送餐员'),
     ]
 
     ID = models.CharField(primary_key=True,max_length=20,verbose_name="账号")
@@ -47,7 +47,7 @@ class Order(models.Model):
     订单数据库
     """
     _choice=[
-        ('已下单','客户已下单'),
+        ('已下单','顾客已下单'),
         ('制作中','商家已接单'),
         ('配送中','配送员已接餐'),
         ('已完成','顾客已接餐')
