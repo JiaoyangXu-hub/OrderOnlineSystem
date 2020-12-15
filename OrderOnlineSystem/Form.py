@@ -17,7 +17,7 @@ class UsrForm(LoginForm):
         ('Merchant','商家'),
         ('Dispatcher','送餐员'),
     ]
-    phoneNumber = forms.CharField(max_length=11,min_length=11,label='Tel')
+    phoneNumber = forms.RegexField(max_length=11,min_length=11,regex=r'1[3-9]\d{9}',label='Tel')
     email = forms.EmailField(label="邮箱",widget=forms.EmailInput)
     location = forms.CharField(label="地址")
     stage = forms.ChoiceField(choices=_stage,label="身份")

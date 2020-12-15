@@ -1,13 +1,16 @@
 from django.shortcuts import render
+from cmdb.models import Menu
+
 
 # Create your views here.
-
 
 def base_view(request):
     """
     顾客主界面
     """
-    return render(request,'C/base_view.html')
+    menu = Menu.objects.all()
+    menu_None= menu is None
+    return render(request,'C/base_view.html',{'menu':menu,'menu_None':menu_None})
 
 def order_view(request):
     """

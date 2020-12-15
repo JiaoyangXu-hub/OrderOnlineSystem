@@ -14,19 +14,22 @@ def login_view(request):
     """
     登录主界面
     """
-    return render(request,'Login/login_view.html',{'form':LoginForm})
+    if request.session.get('is_login', None):  # 不允许重复登录
+        return redirect(reverse(request.session['stage']+'System:base'))
+        
+    return render(request,'Login/login_view.html',{'form':LoginForm,'message':request.session.get('message','')})
 
 def find_view(request):
     """
     找回界面
     """
-    return render(request,'Login/find_view.html',{'form':UsrForm})
+    return render(request,'Login/find_view.html',{'form':UsrForm,'message':request.session.get('message','')})
 
 def regist_view(request):
     """
     注册界面
     """
-    return render(request,'Login/regist_view.html',{'form':UsrForm})
+    return render(request,'Login/regist_view.html',{'form':UsrForm,'message':request.session.get('message','')})
 
 
 
@@ -37,8 +40,6 @@ def login(request):
     提交登录表单
     '''
     # request.session['is_login']=False
-    if request.session.get('is_login', None):  # 不允许重复登录
-        return redirect(reverse(request.session['stage']+'System:base'))
 
     if request.method == 'POST':
         login_form = LoginForm(request.POST)
@@ -49,22 +50,28 @@ def login(request):
             try:
                 user = Usr.objects.get(ID=ID)
             except :
-                message = '用户不存在！'
-                return render(request, 'Login/login_view.html', {"form":LoginForm,"message":message})
+                request.session['message']='用户不存在！'
+                return redirect('/Login/')
+                # return render(request, 'Login/login_view.html', {"form":LoginForm,"message":message})
 
             if user.password == password:
+                request.session.set_expiry(0)
                 request.session['is_login'] = True   # 是否登录
                 request.session['user_id'] = user.ID # 用户账号
                 request.session['stage'] = user.stage# 用户身份
                 return redirect(reverse(request.session['stage']+'System:base'))
             else:
-                message = '密码不正确！'
-                return render(request, 'Login/login_view.html', {"form":LoginForm,"message":message})
+                request.session['message'] = '密码不正确！'
+                return redirect('/Login/')
+                # return render(request, 'Login/login_view.html', {"form":LoginForm,"message":message})
         else:
-            message = '填写格式不规范'
-            return render(request, 'Login/login_view.html', {"form":LoginForm,"message":message})
+            request.session['message'] = '填写格式不规范'
+            return redirect('/Login/')
+            # return render(request, 'Login/login_view.html', {"form":LoginForm,"message":message})
     else:
-        return render(request, 'Login/login_view.html', {"form":LoginForm,"message":message})
+        request.session['message'] = '未知错误'
+        return redirect('/Login/')
+        # return render(request, 'Login/login_view.html', {"form":LoginForm,"message":message})
 
 def logout(request):
     """
