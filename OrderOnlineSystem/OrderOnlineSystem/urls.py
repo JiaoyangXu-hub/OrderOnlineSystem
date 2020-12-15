@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin,auth
 from django.urls import path,include
+from Login.views import login_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,4 +23,5 @@ urlpatterns = [
     path('CustomerSystem/',include('CustomerSystem.urls')),
     path('DispatcherSystem/',include('DispatcherSystem.urls')),
     path('MerchantSystem/',include('MerchantSystem.urls')),
+    path('', login_view)
 ]
