@@ -9,8 +9,12 @@ def base_view(request):
     顾客主界面
     """
     menu = Menu.objects.all()
-    menu_None= menu is None
-    return render(request,'C/base_view.html',{'menu':menu,'menu_None':menu_None})
+    menu_None= len(menu)==0
+    if list(menu):
+        a=list(menu)
+    else:
+        a=list(menu)
+    return render(request,'C/base_view.html',{'menu':menu,'menu_None':list(menu)})
 
 def order_view(request):
     """

@@ -79,7 +79,10 @@ def logout(request):
     还没写路由什么的,只是定义了一个函数,具体退出需要在登录后的界面上安排
     """
     request.session['is_login']=False
-    return render(request,'Login/login_view.html',{"form":LoginForm})
+    del request.session['user_id']
+    del request.session['stage']
+    request.session['message']=''
+    return redirect('/Login/')
 
 def regist(request):
     """
@@ -93,7 +96,8 @@ def regist(request):
         else:
             tmp = regist_form.clean()
             Usr.objects.create(**tmp)
-            return render(request,'Login/login_view.html',{"form":LoginForm})
+            return redirect('/Login/')
+            # return render(request,'Login/login_view.html',{"form":LoginForm})
 
     elif regist_form.errors is not None:
         print(regist_form.errors)
