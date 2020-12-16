@@ -54,7 +54,6 @@ def dishDetail(request,dishID):
     """
     dish = Menu.objects.get(ID=dishID)
     dish_form = MerchantDish(data=dish.clean(),initial=dish.clean())
-    d = dish_form.is_bound
     comment = Order.objects.filter(itemID=dishID).values('commentMerchant')
     return render(request,'M/detailDish.html',{'form':dish_form,'comment':comment,'dishID':dishID})
 
