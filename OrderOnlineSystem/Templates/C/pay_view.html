@@ -1,0 +1,37 @@
+{% extends '../main.html' %} {% block title %} 顾客首页 {% endblock title %} {% block brand %}
+<a class="navbar-brand" href="/CustomerSystem/">顾客系统</a> {% endblock brand %} {% block navigate %}
+<li><a href="/CustomerSystem/">点餐</a></li>
+<li class="active"><a href="order/list/">我的订单 <span class="sr-only">(current)</span></a></li>
+<!-- 记得设置这个跳转！！！ -->
+{% endblock navigate %} {% block tableName %}{% endblock tableName %} {% block tableBody %}
+<!--将目录的数据展示在html中-->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">账单详情</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <h4 class="list-group-item-heading">用户账号</h4>
+                <p class="list-group-item-text">{{data.user_id}}</p>
+            </li>
+            <li class="list-group-item">
+                <h4 class="list-group-item-heading">订单号</h4>
+                <p class="list-group-item-text">{{data.order_id}}</p>
+            </li>
+            <li class="list-group-item">
+                <h4 class="list-group-item-heading">价格</h4>
+                <p class="list-group-item-text">{{data.price}}</p>
+            </li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail">
+                <img src="..." alt="...">
+            </a>
+        </div>
+    </div>
+    <button type="button"><a href="submit/"> 已支付</a></button>
+</div>
+{% endblock tableBody %}

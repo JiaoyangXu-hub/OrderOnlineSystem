@@ -6,6 +6,9 @@ app_name = "CustomerSystem"
 
 urlpatterns = [
     path('', views.base_view, name = "base"),# 顾客服务系统
-    path('order', views.order_view, name = 'order'),# 订单详情
-    path('pay', views.pay_view, name = 'pay')# 缴费
+    path('order/<int:dishID>/', views.order_view),# 订单详情
+    path('order/<int:dishID>/submit/',views.order_submit),# 提交订单
+    path('pay/<int:orderID>/', views.pay_view),# 缴费
+    path('pay/<int:orderID>/submit/',views.pay_submit),#确认账单
+    path('order/list/',views.order_list_view),#历史订单列表
 ]

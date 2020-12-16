@@ -53,7 +53,7 @@ def dishDetail(request,dishID):
     展示餐品的评论以及维护餐品(修改或删除)
     """
     dish = Menu.objects.get(ID=dishID)
-    dish_form = MerchantDish(data=dish.clean(),initial=dish.clean())
+    dish_form = MerchantDish()
     comment = Order.objects.filter(itemID=dishID).values('commentMerchant')
     return render(request,'M/detailDish.html',{'form':dish_form,'comment':comment,'dishID':dishID})
 
