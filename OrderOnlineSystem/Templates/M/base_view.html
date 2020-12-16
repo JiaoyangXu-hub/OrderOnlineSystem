@@ -1,9 +1,10 @@
 {% extends '../main.html' %} {% block title %} 商家首页 {% endblock title %} {% block brand %}
 <a class="navbar-brand" href="/MerchantSystem/">商家系统</a> {% endblock brand %} {% block navigate %}
-<li class="active"><a href="/MerchantSystem/">我的餐品 <span class="sr-only">(current)</span></a></li>
+<li class="active"><a href="/MerchantSystem/">我的餐品<span class="sr-only">(current)</span></a></li>
 <li><a href="/MerchantSystem/addDish/">添加餐品</a></li>
 <!-- 记得设置这个跳转！！！ -->
-<li><a href="#">我的订单</a></li>
+<li><a href="/MerchantSystem/dealItem/">我的订单</a></li>
+<li><a href="/MerchantSystem/getCash/">营收提现</a></li>
 {% endblock navigate %} {% block tableName %}菜单详情 {% endblock tableName %} {% block tableBody %} {% for dish in menu %}
 <!--将目录的数据展示在html中-->
 <!-- 提交到一个含参数的url注意后端的接收 -->

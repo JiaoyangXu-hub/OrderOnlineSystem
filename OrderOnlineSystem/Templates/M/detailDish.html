@@ -3,7 +3,8 @@
 <li class="active"><a href="/MerchantSystem/">我的餐品 <span class="sr-only">(current)</span></a></li>
 <li><a href="/MerchantSystem/addDish/">添加餐品</a></li>
 <!-- 记得设置这个跳转！！！ -->
-<li><a href="#">我的订单</a></li>
+<li><a href="/MerchantSystem/dealItem/">我的订单</a></li>
+<li><a href="/MerchantSystem/getCash/">营收提现</a></li>
 {% endblock navigate %} {% block tableName %}修改菜品 {% endblock tableName %} {% block tableBody %}
 <form action="updateDish_post/" method="post">
     {% csrf_token %} {{form.as_p}}

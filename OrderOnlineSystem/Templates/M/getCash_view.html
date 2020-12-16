@@ -1,0 +1,17 @@
+{% extends '../main.html' %} {% block title %} 商家首页 {% endblock title %} {% block brand %}
+<a class="navbar-brand" href="/MerchantSystem/">商家系统</a> {% endblock brand %} {% block navigate %}
+<li><a href="/MerchantSystem/">我的餐品</a></li>
+<li><a href="/MerchantSystem/addDish/">添加餐品</a></li>
+<!-- 记得设置这个跳转！！！ -->
+<li><a href="/MerchantSystem/dealItem/">我的订单</a></li>
+<li class="active"><a href="/MerchantSystem/getCash/">营收提现<span class="sr-only">(current)</span></a></li>
+{% endblock navigate %} {% block tableName %}菜单详情 {% endblock tableName %} {% block tableBody %}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">提现须知</h3>
+    </div>
+    <div class="panel-body">
+        已将您的提现请求记录在等待列表，我们会在三个工作日内将您的收益发送到您的支付宝账户上，请您注意查收。
+    </div>
+</div>
+{% endblock tableBody %}

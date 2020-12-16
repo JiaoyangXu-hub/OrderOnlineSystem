@@ -1,0 +1,48 @@
+{% extends '../main.html' %} {% block title %} 商家首页 {% endblock title %} {% block brand %}
+<a class="navbar-brand" href="/MerchantSystem/">商家系统</a> {% endblock brand %} {% block navigate %}
+<li class="active"><a href="/MerchantSystem/">我的餐品<span class="sr-only">(current)</span></a></li>
+<li><a href="/MerchantSystem/addDish/">添加餐品</a></li>
+<!-- 记得设置这个跳转！！！ -->
+<li><a href="/MerchantSystem/dealItem/">我的订单</a></li>
+<li><a href="/MerchantSystem/getCash/">营收提现</a></li>
+{% endblock navigate %} {% block tableName %}菜单详情 {% endblock tableName %} {% block tableBody %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">订单号</th>
+            <th scope="col">餐品名</th>
+            <th scope="col">商家</th>
+            <th scope="col">配送员</th>
+            <th scope="col">订单时间</th>
+            <th scope="col">是否接单</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <!--将目录的数据展示在html中-->
+        <!-- 提交到一个含参数的url注意后端的接收 -->
+        <form action="/MerchantSystem/dealItem/{{order.orderID}}/" method="GET">
+            <tr>
+                <th scope="row">{{order.orderID|default:"Null"}}</th>
+                <td>{{order.itemID.itemName|default:"Null"}}</td>
+                <td>{{order.MerchantID.ID|default:"Null"}}</td>
+                <td>{{order.CustomerID.ID|default:"Null"}}</td>
+                <td>{{order.createTime|default:"Null"}}</td>
+                {% if order.stage == "已支付" %}
+                <td><button type="submit">接单</button></td>
+                {% else %}
+                <td><button type="button" disabled="disabled">{{order.stage}}</button></td>
+                {% endif %}
+            </tr>
+
+    </tbody>
+
+    </form>
+
+    {% empty %}
+
+    <!--若中无数据展示如下内容-->
+
+    <p>暂无数据..</p>
+
+    {% endfor %} {% endblock tableBody %}
