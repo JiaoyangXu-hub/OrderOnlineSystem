@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect,HttpResponse
 from cmdb.models import Menu
 
 
@@ -8,13 +8,12 @@ def base_view(request):
     """
     顾客主界面
     """
-    menu = Menu.objects.all()
-    menu_None= len(menu)==0
-    if list(menu):
-        a=list(menu)
+    if request.session['is_login']:
+        menu = Menu.objects.all()
+        user_id = request.session['user_id']
+        return render(request,'C/base_view.html',{'menu':menu,'user_id':user_id})
     else:
-        a=list(menu)
-    return render(request,'C/base_view.html',{'menu':menu,'menu_None':list(menu)})
+        return redirect('/Login/')
 
 def order_view(request):
     """

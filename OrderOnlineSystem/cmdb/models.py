@@ -30,9 +30,9 @@ class Menu(models.Model):
     """
     餐品数据库
     """
-    ID = models.IntegerField(primary_key=True,auto_created=True,editable=False)
+    ID = models.BigAutoField(primary_key=True,editable=False)
     lastEditTime = models.DateTimeField(auto_now_add=True)
-    merchantID = models.ForeignKey("Usr", verbose_name="商家账号", on_delete=models.CASCADE)
+    merchantID = models.ForeignKey(Usr, verbose_name="商家账号", on_delete=models.CASCADE,to_field='ID')
     itemName = models.CharField(max_length=20,verbose_name="餐品名")
     itemText = models.TextField(verbose_name="餐品简介")
     price = models.FloatField(verbose_name="餐品价格")
@@ -52,12 +52,12 @@ class Order(models.Model):
         ('配送中','配送员已接餐'),
         ('已完成','顾客已接餐')
     ]
-    orderID = models.IntegerField(verbose_name="订单号")
+    orderID = models.BigAutoField(primary_key=True,editable=False,verbose_name="订单号")
     createTime = models.DateTimeField(auto_created=True, auto_now=True, auto_now_add=False,verbose_name="生成时间")
-    CustomerID = models.ForeignKey("Usr", verbose_name="顾客ID", on_delete=models.CASCADE,related_name='CustomerID')
-    MerchantID = models.ForeignKey("Usr", verbose_name="商家ID", on_delete=models.CASCADE,related_name='MerchantID')
-    DispatcherID = models.ForeignKey("Usr", verbose_name="送餐员ID", on_delete=models.CASCADE,related_name='DispatcherID')
-    itemID = models.ForeignKey("Menu",verbose_name='餐品号',on_delete=models.CASCADE)
+    CustomerID = models.ForeignKey(Usr, verbose_name="顾客ID", on_delete=models.SET_NULL,related_name='CustomerID',null=True)
+    MerchantID = models.ForeignKey(Usr, verbose_name="商家ID", on_delete=models.SET_NULL,related_name='MerchantID',null=True)
+    DispatcherID = models.ForeignKey(Usr, verbose_name="送餐员ID", on_delete=models.SET_NULL,related_name='DispatcherID',null=True)
+    itemID = models.ForeignKey(Menu,verbose_name='餐品号',on_delete=models.SET_NULL,null=True)
     stage = models.CharField(choices=_choice,null=False,max_length=20,verbose_name='订单状态')
     commentMerchant = models.TextField(verbose_name="餐品评价")
     commentDispatcher = models.TextField(verbose_name="配送评价")
@@ -71,10 +71,10 @@ class Bill(models.Model):
     """
     账单数据库
     """
-    billID = models.IntegerField(primary_key=True,auto_created=True,editable=False)
+    billID = models.BigAutoField(primary_key=True,editable=False,verbose_name='账单号')
     createTime = models.DateTimeField(auto_created=True, auto_now=True, auto_now_add=False,verbose_name="生成时间")
-    usrID = models.ForeignKey("Usr", verbose_name='用户账号', on_delete=models.CASCADE)
-    orderID = models.ForeignKey("Order", verbose_name="订单号", on_delete=models.CASCADE)
+    usrID = models.ForeignKey(Usr, verbose_name='用户账号', on_delete=models.CASCADE)
+    orderID = models.ForeignKey(Order, verbose_name="订单号", on_delete=models.CASCADE)
     price = models.FloatField(verbose_name="金额")
     class Meta:
         db_table = "Bill"
@@ -86,9 +86,9 @@ class WaitCash(models.Model):
     """
     待提现数据库
     """
-    ID = models.IntegerField(primary_key=True,auto_created=True,editable=False,verbose_name="单号")
+    ID = models.AutoField(primary_key=True,editable=False,verbose_name="单号")
     createTime = models.DateTimeField(auto_now=True, auto_now_add=False, verbose_name="生成时间")
-    usrID = models.ForeignKey("Usr", verbose_name="用户ID", on_delete=models.CASCADE)
+    usrID = models.ForeignKey(Usr, verbose_name="用户ID", on_delete=models.CASCADE)
     price = models.FloatField(verbose_name="金额")
     note = models.TextField(verbose_name="备注")
     class Meta:

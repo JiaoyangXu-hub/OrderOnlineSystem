@@ -1,0 +1,21 @@
+{% extends '../main.html' %} {% block title %} 商家首页 {% endblock title %} {% block navigate %}
+<li class="active"><a href="/MerchantSystem/">我的餐品 <span class="sr-only">(current)</span></a></li>
+<li><a href="/MerchantSystem/addDish/">添加餐品</a></li>
+<!-- 记得设置这个跳转！！！ -->
+<li><a href="#">我的订单</a></li>
+{% endblock navigate %} {% block tableName %}修改菜品 {% endblock tableName %} {% block tableBody %}
+<form action="updateDish_post/" method="post">
+    {% csrf_token %} {{form.as_p}}
+    <button type="submit">修改</button>
+    <button type="button"><a href="/MerchantSystem/DelDish/{{dishID}}/">删除</a></button>
+</form>
+<ul class="list-group">
+    {% for c in comment %}
+
+    <li class="list-group-item">{{c}}</li>
+
+    {% empty %}
+    <p>暂无评论</p>
+    {% endfor %}
+</ul>
+{% endblock tableBody %}

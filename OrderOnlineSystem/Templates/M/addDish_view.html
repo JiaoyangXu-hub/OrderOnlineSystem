@@ -1,0 +1,12 @@
+{% extends '../main.html' %} {% block title %} 商家首页 {% endblock title %} {% block navigate %}
+<li><a href="/MerchantSystem/">我的餐品</a></li>
+<li class="active"><a href="#">添加餐品 <span class="sr-only">(current)</span></a></li>
+<!-- 记得设置这个跳转！！！ -->
+<li><a href="#">我的订单</a></li>
+{% endblock navigate %} {% block tableName %}餐品详情 {% endblock tableName %} {% block tableBody %}
+<!--将目录的数据展示在html中-->
+<form action="/MerchantSystem/addDish_post/" method="post">
+    {% csrf_token %} {{form.as_p}}
+    <button type="submit">提交</button>
+</form>
+{% endblock tableBody %}
