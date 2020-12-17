@@ -89,7 +89,7 @@ def getCash_view(request):
     for item in bill:
         totalCount += item.price
     # 创建待提现表中的数据项
-    WaitCash.objects.create(price=totalCount,usrID=user,note='等待提现')
+    WaitCash.objects.create(price=totalCount,usrID=user,note='商家等待提现')
     # 删除这些账单项
     Bill.objects.filter(usrID=user).delete()
     return render(request,'M/getCash_view.html',{'total':totalCount,'user_id':request.session['user_id']})
