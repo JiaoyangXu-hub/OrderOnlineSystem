@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,reverse
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse,HttpResponseRedirect,Http404
 from django.views.decorators import csrf
 from cmdb.models import Usr
 from Form import UsrForm,LoginForm
@@ -88,6 +88,8 @@ def regist(request):
     """
     提交注册表单动作
     """
+    # 消除之前的信息的影响
+    request.session['message']=''
     regist_form = UsrForm(request.POST)
     if regist_form.is_valid():# 检验完整性
         if Usr.objects.filter(ID = regist_form.clean().get('ID')):# 检验是否重复ID
@@ -97,9 +99,10 @@ def regist(request):
             tmp = regist_form.clean()
             Usr.objects.create(**tmp)
             return redirect('/Login/')
-            # return render(request,'Login/login_view.html',{"form":LoginForm})
 
     elif regist_form.errors is not None:
         print(regist_form.errors)
         return HttpResponse(str(regist_form.errors))
+    else:
+        return Http404()
 
