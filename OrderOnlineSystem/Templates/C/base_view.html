@@ -3,7 +3,9 @@
 <li class="active"><a href="/CustomerSystem/">点餐 <span class="sr-only">(current)</span></a></li>
 <!-- 记得设置这个跳转！！！ -->
 <li><a href="/CustomerSystem/order/list/">我的订单</a></li>
-{% endblock navigate %} {% block tableName %}菜单详情 {% endblock tableName %} {% block tableBody %} {% for dish in menu %}
+{% endblock navigate %} {% block tableName %}菜单详情 {% endblock tableName %} {% block tableBody %} 
+
+{% for dish in menu %}
 <!--将目录的数据展示在html中-->
 <form action="/CustomerSystem/order/{{dish.ID}}/" method="post">
     {% csrf_token %}
@@ -17,13 +19,13 @@
         <div class="media-body">
             <h4 class="media-heading">
                 <button type="submit" title="选择下单">
-                    {{dish.itemName|default:"Null"}}
+                    菜名：{{dish.itemName|default:"Null"}}
                 </button>
                 <span class="label label-default">
-                    {{dish.price|default:"Null"}}<small style="color: aliceblue;">+{{bonus}}</small>
+                    价格：{{dish.price|default:"Null"}}<small style="color: aliceblue;">+{{bonus}}(配送费)</small>
                 </span>
             </h4>
-            {{dish.itemText|default:"Null"}}
+            简介：{{dish.itemText|default:"Null"}}
         </div>
     </li>
 
@@ -35,4 +37,5 @@
 
 <p>暂无数据..</p>
 
-{% endfor %} {% endblock tableBody %}
+{% endfor %} 
+{% endblock tableBody %}
