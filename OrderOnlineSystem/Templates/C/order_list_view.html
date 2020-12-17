@@ -2,7 +2,7 @@
 <a class="navbar-brand" href="/CustomerSystem/">顾客系统</a> {% endblock brand %} {% block navigate %}
 <li><a href="/CustomerSystem/">点餐 </a></li>
 <!-- 记得设置这个跳转！！！ -->
-<li class="active"><a href="order/list/">我的订单<span class="sr-only">(current)</span></a></li>
+<li class="active"><a href="/CustomerSystem/order/list/">我的订单<span class="sr-only">(current)</span></a></li>
 {% endblock navigate %} {% block tableName %}菜单详情 {% endblock tableName %} {% block tableBody %}
 <table class="table">
     <thead>
@@ -12,20 +12,33 @@
             <th scope="col">商家</th>
             <th scope="col">配送员</th>
             <th scope="col">订单时间</th>
+            <th scope="col">订单状态</th>
+            <th scope="col">确认/评论</th>
         </tr>
     </thead>
-    <tbody></tbody>
-    {% for order in orders %}
-    <!--将目录的数据展示在html中-->
+    <tbody>
+        {% for order in orders %}
+        <!--将目录的数据展示在html中-->
 
-
-    <tr>
-        <th scope="row">{{order.orderID|default:"Null"}}</th>
-        <td>{{order.itemID.itemName|default:"Null"}}</td>
-        <td>{{order.MerchantID.ID|default:"Null"}}</td>
-        <td>{{order.CustomerID.ID|default:"Null"}}</td>
-        <td>{{order.createTime|default:"Null"}}</td>
-    </tr>
+        <tr>
+            <th scope="row">{{order.orderID|default:"Null"}}</th>
+            <td>{{order.itemID.itemName|default:"Null"}}</td>
+            <td>{{order.MerchantID.ID|default:"Null"}}</td>
+            <td>{{order.CustomerID.ID|default:"Null"}}</td>
+            <td>{{order.createTime|default:"Null"}}</td>
+            <td>{{order.stage|default:"Null"}}</td>
+            {% if order.stage == "配送中" %}
+            <td><button type="button">
+                <a href="/CustomerSystem/order/confirm/{{order.orderID}}/">确认</a>
+            </button></td>
+            {% elif order.stage == "已完成" %}
+            <td><button type="button">
+                <a href="/CustomerSystem/order/comment/{{order.orderID}}/">评论</a>
+            </button></td>
+            {% else %}
+            <td></td>
+            {% endif %}
+        </tr>
 
     </tbody>
 

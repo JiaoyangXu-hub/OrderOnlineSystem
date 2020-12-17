@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,HttpResponse
 from cmdb.models import Menu,Usr,Order,Bill,WaitCash
 from Form import MerchantDish
+from PIL import Image
 # Create your views here.
 
 def base_view(request):
@@ -51,7 +52,7 @@ def dishDetail(request,dishID):
     """
     dish = Menu.objects.get(ID=dishID)
     dish_form = MerchantDish()
-    comment = Order.objects.filter(itemID=dishID).values('commentMerchant')
+    comment = Order.objects.filter(itemID=dish).values('commentMerchant')
     return render(request,'M/detailDish.html',{'form':dish_form,'comment':comment,'dishID':dishID})
 
 def delDish(request,dishID):

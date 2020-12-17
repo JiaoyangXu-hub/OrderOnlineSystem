@@ -12,11 +12,9 @@
     <button type="button"><a href="/MerchantSystem/DelDish/{{dishID}}/">删除</a></button>
 </form>
 <ul class="list-group">
-    {% for c in comment %}
-
-    <li class="list-group-item">{{c}}</li>
-
-    {% empty %}
+    {% for c in comment %} {% if c.commentMerchant|length > 1 %}
+    <li class="list-group-item">{{c.commentMerchant}}</li>
+    {% else %} {% endif %} {% empty %}
     <p>暂无评论</p>
     {% endfor %}
 </ul>

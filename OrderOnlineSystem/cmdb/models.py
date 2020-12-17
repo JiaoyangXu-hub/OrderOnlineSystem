@@ -36,6 +36,7 @@ class Menu(models.Model):
     itemName = models.CharField(max_length=20,verbose_name="餐品名")
     itemText = models.TextField(verbose_name="餐品简介")
     price = models.FloatField(verbose_name="餐品价格")
+    picture = models.ImageField(verbose_name='餐品图片',null=True,upload_to='img/')
     class Meta:
         db_table = "Menu"
         verbose_name = "餐品数据表"
@@ -51,7 +52,8 @@ class Order(models.Model):
         ('已支付','顾客已下单，已支付'),
         ('制作中','商家已接单'),
         ('配送中','配送员已接餐'),
-        ('已完成','顾客已接餐')
+        ('已完成','顾客已接餐'),
+        ('已评价','顾客已接餐'),
     ]
     orderID = models.BigAutoField(primary_key=True,editable=False,verbose_name="订单号")
     createTime = models.DateTimeField(auto_created=True, auto_now=True, auto_now_add=False,verbose_name="生成时间")

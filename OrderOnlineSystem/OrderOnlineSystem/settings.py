@@ -129,3 +129,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     join(BASE_DIR, "static"),
 ]
+# 图片储存路径
+MEDIA_ROOT = '/picture/'
+# 图片访问url
+MEDIA_URL = '/IMG/'
+# 配送员小费
+BONUS = 2

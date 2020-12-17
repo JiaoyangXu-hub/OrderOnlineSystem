@@ -1,0 +1,51 @@
+ {% extends '../main.html' %} {% block title %} 送餐员首页 {% endblock title %}{% block brand %}
+<a class="navbar-brand" href="/DispatcherSystem/">送餐系统</a> {% endblock brand %} {% block navigate %}
+<li class="active"><a href="/DispatcherSystem/">接收订单 <span class="sr-only">(current)</span></a></li>
+<!-- 记得设置这个跳转！！！ -->
+<li><a href="/DispatcherSystem/history/">接单记录</a></li>
+<li><a href="/DispatcherSystem/getCash/">提现</a></li>
+{% endblock navigate %} {% block tableName %}待接订单 {% endblock tableName %} {% block tableBody %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">订单号</th>
+            <th scope="col">商家</th>
+            <th scope="col">起始地点</th>
+            <th scope="col">商家联系方式</th>
+            <th scope="col">顾客</th>
+            <th scope="col">目的地点</th>
+            <th scope="col">顾客联系方式</th>
+            <th scope="col">订单时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <!--将目录的数据展示在html中-->
+        <form action="/DispatcherSystem/order/{{order.orderID}}/" method="GET">
+            <tr>
+                <th scope="row">{{order.orderID|default:"Null"}}</th>
+                <td>{{order.MerchantID.ID|default:"Null"}}</td>
+                <td>{{order.MerchantID.location|default:"Null"}}</td>
+                <td>{{order.MerchantID.phoneNumber|default:"Null"}}</td>
+                <td>{{order.CustomerID.ID|default:"Null"}}</td>
+                <td>{{order.CustomerID.location|default:"Null"}}</td>
+                <td>{{order.CustomerID.phoneNumber|default:"Null"}}</td>
+                <td>{{order.createTime|default:"Null"}}</td>
+                {% if order.stage == "制作中" %}
+                <td><button type="submit">接单</button></td>
+                {% elif order.stage == "配送中" %}
+                <td><button type="button" disabled="disabled">配送中</button></td>
+                {% endif %}
+            </tr>
+        </form>
+    </tbody>
+
+
+
+    {% empty %}
+
+    <!--若中无数据展示如下内容-->
+
+    <p>暂无可接收订单..</p>
+
+    {% endfor %} {% endblock tableBody %}

@@ -1,7 +1,7 @@
 {% extends '../main.html' %} {% block title %} 顾客首页 {% endblock title %} {% block brand %}
 <a class="navbar-brand" href="/CustomerSystem/">顾客系统</a> {% endblock brand %} {% block navigate %}
 <li><a href="/CustomerSystem/">点餐</a></li>
-<li class="active"><a href="order/list/">我的订单 <span class="sr-only">(current)</span></a></li>
+<li class="active"><a href="/CustomerSystem/order/list/">我的订单 <span class="sr-only">(current)</span></a></li>
 <!-- 记得设置这个跳转！！！ -->
 {% endblock navigate %} {% block tableName %}{% endblock tableName %} {% block tableBody %}
 <!--将目录的数据展示在html中-->
@@ -20,8 +20,12 @@
                 <p class="list-group-item-text">{{orderData.itemName}}</p>
             </li>
             <li class="list-group-item">
-                <h4 class="list-group-item-heading">价格</h4>
+                <h4 class="list-group-item-heading">餐品价格</h4>
                 <p class="list-group-item-text">{{orderData.price}}</p>
+            </li>
+            <li class="list-group-item">
+                <h4 class="list-group-item-heading">配送价格</h4>
+                <p class="list-group-item-text">{{bonus}}</p>
             </li>
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">商家账号</h4>

@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin,auth
 from django.urls import path,include
 from Login.views import login_view
+# from Login.views import img_show #没写
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,5 +24,6 @@ urlpatterns = [
     path('CustomerSystem/',include('CustomerSystem.urls')),
     path('DispatcherSystem/',include('DispatcherSystem.urls')),
     path('MerchantSystem/',include('MerchantSystem.urls')),
-    path('', login_view)
+    path('', login_view),
+    # path('IMG/',img_show)
 ]

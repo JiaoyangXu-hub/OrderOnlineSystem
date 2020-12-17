@@ -1,0 +1,38 @@
+{% extends '../main.html' %} {% block title %} 顾客首页 {% endblock title %} {% block brand %}
+<a class="navbar-brand" href="/CustomerSystem/">顾客系统</a> {% endblock brand %} {% block navigate %}
+<li><a href="/CustomerSystem/">点餐</a></li>
+<li class="active"><a href="/CustomerSystem/order/list/">我的订单 <span class="sr-only">(current)</span></a></li>
+<!-- 记得设置这个跳转！！！ -->
+{% endblock navigate %} {% block tableName %}{% endblock tableName %} {% block tableBody %}
+<!--将目录的数据展示在html中-->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">餐品评价</h3>
+    </div>
+    <form action="/CustomerSystem/order/comment_post/{{order.orderID}}/" method="post">
+        {% csrf_token %}
+        <div class="panel-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">订单号</h4>
+                    <p class="list-group-item-text">{{order.orderID}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">状态</h4>
+                    <p class="list-group-item-text">{{order.stage}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">菜品名</h4>
+                    <p class="list-group-item-text">{{order.itemID.itemName}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">总价格</h4>
+                    <p class="list-group-item-text">{{total}}</p>
+                </li>
+            </ul>
+            {{form.as_p}}
+        </div>
+        <button type="submit">提交评价</button>
+    </form>
+</div>
+{% endblock tableBody %}

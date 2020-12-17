@@ -2,7 +2,7 @@
 <a class="navbar-brand" href="/CustomerSystem/">顾客系统</a> {% endblock brand %} {% block navigate %}
 <li class="active"><a href="/CustomerSystem/">点餐 <span class="sr-only">(current)</span></a></li>
 <!-- 记得设置这个跳转！！！ -->
-<li><a href="order/list/">我的订单</a></li>
+<li><a href="/CustomerSystem/order/list/">我的订单</a></li>
 {% endblock navigate %} {% block tableName %}菜单详情 {% endblock tableName %} {% block tableBody %} {% for dish in menu %}
 <!--将目录的数据展示在html中-->
 <form action="/CustomerSystem/order/{{dish.ID}}/" method="post">
@@ -10,7 +10,8 @@
     <li class="media">
         <div class="media-left media-middle">
             <a href="#">
-                <img class="media-object" src="..." alt="...">
+                <!-- {{dish.picture|default:"Null"}} -->
+                <!-- <img class="media-object" src="..." alt="..."> -->
             </a>
         </div>
         <div class="media-body">
@@ -19,7 +20,7 @@
                     {{dish.itemName|default:"Null"}}
                 </button>
                 <span class="label label-default">
-                    {{dish.price|default:"Null"}}
+                    {{dish.price|default:"Null"}}<small style="color: aliceblue;">+{{bonus}}</small>
                 </span>
             </h4>
             {{dish.itemText|default:"Null"}}
