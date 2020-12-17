@@ -9,7 +9,10 @@ def base_view(request):
     商家服务主界面
     """
     if request.session['is_login']:
-        menu = Menu.objects.all()
+        # 选定商家
+        user = Usr.objects.get(ID=request.session['user_id'])
+        # 选定该商家的目录
+        menu = Menu.objects.filter(merchantID=user)
         user_id = request.session['user_id']
         return render(request,'M/base_view.html',{'menu':menu,'user_id':user_id})
     else:

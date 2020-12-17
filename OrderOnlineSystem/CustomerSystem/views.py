@@ -52,7 +52,8 @@ def pay_submit(request,orderID):
     order = Order.objects.get(orderID=orderID)
     # 给商家计入费用
     Bill.objects.create(orderID=order,price=order.itemID.price,usrID=order.MerchantID)
-
+    # 给送餐员计入费用
+    Bill.objects.create(orderID=order,price=BONUS,usrID=order.DispatcherID)
     return redirect('/CustomerSystem/')
 
 
