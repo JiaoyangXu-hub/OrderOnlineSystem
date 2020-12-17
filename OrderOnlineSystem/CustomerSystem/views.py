@@ -52,8 +52,6 @@ def pay_submit(request,orderID):
     order = Order.objects.get(orderID=orderID)
     # 给商家计入费用
     Bill.objects.create(orderID=order,price=order.itemID.price,usrID=order.MerchantID)
-    # 给送餐员计入费用
-    Bill.objects.create(orderID=order,price=BONUS,usrID=order.DispatcherID)
     return redirect('/CustomerSystem/')
 
 
@@ -66,6 +64,9 @@ def order_confirm(request,orderID):
     顾客确认订单收到
     """
     Order.objects.filter(orderID=orderID).update(stage='已完成')
+    # 完成后给送餐员记账
+    order = Order.objects.get(orderID=orderID)
+    Bill.objects.create(orderID=order,price=BONUS,usrID=order.DispatcherID)
     return redirect('/CustomerSystem/order/list/')
 
 def comment(request,orderID):
