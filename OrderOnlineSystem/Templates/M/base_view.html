@@ -19,15 +19,15 @@
         </div>
         <div class="media-body">
             <h4 class="media-heading">
-                <button type='submit' class=" url" title="菜品详情">
-                {{dish.itemName|default:"Null"}}
+                <button type='submit' class=" url" title="更新菜品信息">
+                菜名：{{dish.itemName|default:"Null"}}
                 </button>
                 <span class="label label-default">
-                    {{dish.price|default:"Null"}}
+                    价格：{{dish.price|default:"Null"}}
                 </span>
 
             </h4>
-            {{dish.itemText|default:"Null"}}
+            简介：{{dish.itemText|default:"Null"}}
         </div>
     </li>
 </form>
