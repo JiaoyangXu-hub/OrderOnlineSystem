@@ -1,7 +1,7 @@
 # 校园线上订餐系统
 *七校联合办学最后一届双学位进修道友的系统性挣扎*
 
-[![](https://img.shields.io/badge/Djiango-3.1.3-red)  ![](https://img.shields.io/badge/asgiref-3.3.1-green) ![](https://img.shields.io/badge/sqlparse-0.4.1-green) ![](https://img.shields.io/badge/pytz-2020.4-green)]()
+[![](https://img.shields.io/badge/Djiango-3.1.3-red)  ![](https://img.shields.io/badge/Pillow-8.0.1-green)]()
 
 
 [TOC]
@@ -31,6 +31,11 @@
 
 
 ## 总览
+
+py依赖包配置：
+'''
+pip install -r packages.txt
+'''
 
 ### 架构思路
 
