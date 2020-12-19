@@ -21,7 +21,7 @@ def base_view(request):
 
 def dealItem_view(request):
     """
-    查看历史订单,确认制作餐品
+    查看订单信息,确认制作餐品
     """
     user = Usr.objects.get(ID=request.session['user_id'])
     # 该商家的订单,去掉待支付的项
@@ -77,6 +77,20 @@ def updateDish_post(request,dishID):
     elif dish_form.errors is not None:
         print(dish_form.errors)
         return HttpResponse(str(dish_form.errors))
+    #  修改人：汤霖 提示用户做的尝试性修改，可以把原先的信息当作表格的placeholder属性显示出来
+    # dish = Menu.objects.get(ID=dishID)
+    # itemName = request.POST.get('itemName')
+    # itemText = request.POST.get('itemText')
+    # price = request.POST.get('price')
+    # if itemName == '' and itemText == '' and price == '' :
+    #     return render(request,'M/modifyDishError.html',{'dishID':dishID})
+    # else:
+    #     dish.itemName=itemName
+    #     dish.itemText=itemText
+    #     dish.price=price
+    #     dish.save()
+    #     return redirect('/MerchantSystem/')
+
 
 
 def getCash_view(request):
@@ -87,11 +101,12 @@ def getCash_view(request):
     bill = Bill.objects.filter(usrID=user)
     totalCount=0
     for item in bill:
-        totalCount += item.price
+        if  bill.orderID.stage == '已完成' :
+            totalCount += item.price
+            item.delete()# 删除已完成的账单项
     # 创建待提现表中的数据项
-    WaitCash.objects.create(price=totalCount,usrID=user,note='商家等待提现')
-    # 删除这些账单项
-    Bill.objects.filter(usrID=user).delete()
+    if totalCount != 0:
+        WaitCash.objects.create(price=totalCount,usrID=user,note='商家等待提现')
     return render(request,'M/getCash_view.html',{'total':totalCount,'user_id':request.session['user_id']})
 
 
