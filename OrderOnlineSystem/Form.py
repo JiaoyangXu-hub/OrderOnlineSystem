@@ -29,7 +29,7 @@ class MerchantDish(forms.Form):
     itemName = forms.CharField(max_length=20,label="餐品名")
     itemText = forms.CharField(max_length=300,label="餐品简介")
     price = forms.FloatField(label="餐品价格")
-    # picture = forms.ImageField(label='餐品图片')
+    picture = forms.ImageField(label='餐品图片',required=False)
 
 class CommentForm(forms.Form):
     """
