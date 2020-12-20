@@ -7,14 +7,12 @@
 
 {% for dish in menu %}
 <!--将目录的数据展示在html中-->
-<form action="/CustomerSystem/order/{{dish.ID}}/" method="post">
+<form action="/CustomerSystem/order/{{dish.ID}}/" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <li class="media">
         <div class="media-left media-middle">
-            <a href="#">
                 <!-- {{dish.picture|default:"Null"}} -->
-                <!-- <img class="media-object" src="..." alt="..."> -->
-            </a>
+                <img class="media-object" src="/IMG/{{dish.picture|default:'img/default.jpg'}}" height="150" width="150" alt="">            
         </div>
         <div class="media-body">
             <h4 class="media-heading">
