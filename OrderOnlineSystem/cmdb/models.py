@@ -8,7 +8,7 @@ class Usr(models.Model):
     _stage=[
         ('Customer','顾客'),
         ('Merchant','商家'),
-        ('Dispacher','送餐员'),
+        ('Dispatcher','送餐员'),
     ]
 
     ID = models.CharField(primary_key=True,max_length=20,verbose_name="账号")
