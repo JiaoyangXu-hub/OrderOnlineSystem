@@ -1,6 +1,5 @@
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
+
 from . import views
 
 app_name = "CustomerSystem"
@@ -15,4 +14,4 @@ urlpatterns = [
     path('order/confirm/<int:orderID>/',views.order_confirm),#订单确认收到
     path('order/comment/<int:orderID>/',views.comment),#到达相应菜品的评论界面
     path('order/comment_post/<int:orderID>/',views.comment_post)#提交评论
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
