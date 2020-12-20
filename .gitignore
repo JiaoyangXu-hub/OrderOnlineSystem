@@ -1,2 +1,4 @@
 /VENV
 *.pyc
+/.vscode
+/**/*.cpython-38.pyc
