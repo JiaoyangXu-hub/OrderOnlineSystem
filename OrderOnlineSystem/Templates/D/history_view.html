@@ -10,6 +10,7 @@
         <tr>
             <th scope="col">订单号</th>
             <th scope="col">商家</th>
+            <th scope="col">菜名</th>
             <th scope="col">起始地点</th>
             <th scope="col">商家联系方式</th>
             <th scope="col">顾客</th>
@@ -25,6 +26,7 @@
         <tr>
             <th scope="row">{{order.orderID|default:"Null"}}</th>
             <td>{{order.MerchantID.ID|default:"Null"}}</td>
+            <td>{{order.itemID.itemName|default:"Null"}}</td>
             <td>{{order.MerchantID.location|default:"Null"}}</td>
             <td>{{order.MerchantID.phoneNumber|default:"Null"}}</td>
             <td>{{order.CustomerID.ID|default:"Null"}}</td>
