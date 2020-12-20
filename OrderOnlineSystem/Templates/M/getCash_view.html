@@ -8,7 +8,7 @@
 {% endblock navigate %} 
 {% block tableBody %}
 {% if total != 0 %}
-    {% block tableName %} 您的提现金额为:{{total}} {% endblock tableName %} 
+    {% block tableName %} 您的提现金额为:{{total}}元 {% endblock tableName %} 
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">提现须知</h3>
@@ -23,7 +23,7 @@
             <h3 class="panel-title">提现须知</h3>
         </div>
         <div class="panel-body">
-            您目前待提现总额为0元，无法提现
+            您目前待提现总额为0元，无法提现。
         </div>
     </div>
 {% endif %}
