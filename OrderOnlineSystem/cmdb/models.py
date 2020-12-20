@@ -1,4 +1,5 @@
 from django.db import models
+
 # Create your models here.
 
 class Usr(models.Model):
@@ -93,7 +94,6 @@ class WaitCash(models.Model):
     usrID = models.ForeignKey(Usr, verbose_name="用户ID", on_delete=models.CASCADE)
     price = models.FloatField(verbose_name="金额")
     note = models.TextField(verbose_name="备注")
-    is_payyed = models.BooleanField(default=False,name="是否转账")
     class Meta:
         db_table = "WaitCash"
         verbose_name = "待提现数据表"

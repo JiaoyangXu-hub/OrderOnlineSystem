@@ -7,7 +7,7 @@
 <li><a href="/MerchantSystem/getCash/">营收提现</a></li>
 {% endblock navigate %} {% block tableName %}餐品详情 {% endblock tableName %} {% block tableBody %}
 <!--将目录的数据展示在html中-->
-<form action="/MerchantSystem/addDish_post/" method="post" enctype="multipart/form-data">
+<form action="/MerchantSystem/addDish_post/" method="post">
     {% csrf_token %} {{form.as_p}}
     <button type="submit">提交</button>
 </form>

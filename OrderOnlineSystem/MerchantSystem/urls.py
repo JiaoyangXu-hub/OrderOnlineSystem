@@ -1,6 +1,4 @@
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
 
 from . import views
 
@@ -17,5 +15,5 @@ urlpatterns = [
     path('DelDish/<int:dishID>/',views.delDish),# 删除菜品请求
     path('dealItem/<int:orderID>/',views.dealItem_get),# 处理接单请求
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
 

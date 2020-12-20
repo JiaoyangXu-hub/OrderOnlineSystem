@@ -3,27 +3,14 @@
 <li><a href="/DispatcherSystem/">接收订单</a></li>
 <!-- 记得设置这个跳转！！！ -->
 <li><a href="/DispatcherSystem/">接单记录</a></li>
-<li class="active"><a href="/DispatcherSystem/getCash/">提现 <span class="sr-only">(current)</span></a></li>
-{% endblock navigate %} 
-{% block tableBody %}
-{% if totalCount != 0 %}
-    {% block tableName %}您的提现金额为:{{totalCount}} {% endblock tableName %} 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">提现须知</h3>
-        </div>
-        <div class="panel-body">
-            已将您的提现请求记录在等待列表，我们会在三个工作日内将您的收益发送到您的支付宝账户上，请您注意查收。
-        </div>
-    </div>  
-{% else %}
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">提现须知</h3>
-        </div>
-        <div class="panel-body">
-            您目前待提现金额为0元，无法提现。
-        </div>
-    </div>   
-{% endif %}
+<li class="active"><a href="/DispatcherSystem/">提现  <span class="sr-only">(current)</span></a></li>
+{% endblock navigate %} {% block tableName %}您的提现金额为:{{totalCount}} {% endblock tableName %} {% block tableBody %}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">提现须知</h3>
+    </div>
+    <div class="panel-body">
+        已将您的提现请求记录在等待列表，我们会在三个工作日内将您的收益发送到您的支付宝账户上，请您注意查收。
+    </div>
+</div>
 {% endblock tableBody %}

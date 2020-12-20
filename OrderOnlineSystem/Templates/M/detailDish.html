@@ -6,13 +6,9 @@
 <li><a href="/MerchantSystem/dealItem/">我的订单</a></li>
 <li><a href="/MerchantSystem/getCash/">营收提现</a></li>
 {% endblock navigate %} {% block tableName %}修改菜品 {% endblock tableName %} {% block tableBody %}
-<form action="updateDish_post/" method="post" enctype="multipart/form-data">  
+<form action="updateDish_post/" method="post">
     {% csrf_token %} {{form.as_p}}
-    <!--2020.12.18 修改者：汤霖 为了显示修改前信息做的尝试性修改-->
-    <!-- <p>餐品名：<input type="text" name='itemName' placeholder="{{dish.itemName}}"></p>
-    <p>简介：<input type="text" name='itemText' placeholder="{{dish.itemText}}"></p>
-    <p>价格：<input type="text" name='price' placeholder="{{dish.price}}"></p>-->
-    <button type="submit">修改</button> 
+    <button type="submit">修改</button>
     <button type="button"><a href="/MerchantSystem/DelDish/{{dishID}}/">删除</a></button>
 </form>
 <ul class="list-group">

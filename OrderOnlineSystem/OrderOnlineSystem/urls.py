@@ -16,8 +16,6 @@ Including another URLconf
 from django.contrib import admin,auth
 from django.urls import path,include
 from Login.views import login_view
-from django.conf import settings
-from django.conf.urls.static import static
 # from Login.views import img_show #没写
 
 urlpatterns = [
@@ -28,4 +26,4 @@ urlpatterns = [
     path('MerchantSystem/',include('MerchantSystem.urls')),
     path('', login_view),
     # path('IMG/',img_show)
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
