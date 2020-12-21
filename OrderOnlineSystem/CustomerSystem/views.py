@@ -56,7 +56,8 @@ def pay_submit(request,orderID):
 
 
 def order_list_view(request):
-    orders = Order.objects.filter(CustomerID=int(request.session['user_id']))
+    user = Usr.objects.get(ID=request.session['user_id'])
+    orders = Order.objects.filter(CustomerID=user.ID)
     return render(request,'C/order_list_view.html',{'orders':orders,'user_id':request.session['user_id']})
 
 def order_confirm(request,orderID):

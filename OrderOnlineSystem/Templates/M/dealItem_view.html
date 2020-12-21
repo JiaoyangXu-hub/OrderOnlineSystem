@@ -15,6 +15,7 @@
             <th scope="col">配送员</th>
             <th scope="col">订单时间</th>
             <th scope="col">是否接单</th>
+            <th scope="col">顾客评价</th>
         </tr>
     </thead>
     <tbody>
@@ -32,6 +33,9 @@
                 <td><button type="submit">接单</button></td>
                 {% else %}
                 <td><button type="button" disabled="disabled">{{order.stage}}</button></td>
+                {% endif %}
+                {% if order.stage == '已完成' %}
+                <td>{{order.commentMerchant|default:'该用户未评价'}}</td>
                 {% endif %}
             </tr>
 
